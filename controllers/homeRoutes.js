@@ -44,4 +44,21 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
+// create a new comment
+router.post("/post/:id/comments/", async (req, res) => {
+  Comment.create({
+    ...req.body,
+    post_id: JSON.parse(req.params.id),
+    // TODO: change user_id to come from req.session.user_id
+    // user_id: req.session.user_id,
+    user_id: 2,
+  })
+    .then((comment) => {
+      res.status(200).json(comment);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
