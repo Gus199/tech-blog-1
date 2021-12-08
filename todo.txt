@@ -1,11 +1,17 @@
 Todos:
 
-1. Create "add post" form                                   *** DONE ***
-2. Connect add post form with add post button               *** DONE ***
-3. Connect add post form to route                           *** DONE ***
-4. Add "add comment" button         
-5. Connect add comment to route
-6. Add date creation helper
-7. Add delete button to user's posts
-8. Add edit button to user's posts?
-9. Connect to heroku
+Change login to go to dashboard
+
+Update new post page
+Update login/sign up page
+Add view other post page
+Add view own post page
+
+Add comment functionality to view other post page
+
+Add date creation helper
+Add delete to own posts
+Add edit to own posts
+
+Connect to heroku
+
