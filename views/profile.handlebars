@@ -1,0 +1,22 @@
+<div>
+  <!-- Loop over each object in the projects array -->
+
+  {{#each posts as |post|}}
+    <div class="post">
+      <header class="post-header">
+        <a href="/post/{{post.id}}" class="post-title">{{post.title}}</a>
+        <p class="created-details">Posted by
+          {{post.user.username}}
+          on **DATE**</p>
+      </header>
+      <p class="post-content">
+        {{post.contents}}
+      </p>
+    </div>
+  {{/each}}
+
+  <button class="add-post-button">Add Post</button>
+
+</div>
+
+{{! <script src="./js/profile.js"></script> }}

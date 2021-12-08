@@ -22,10 +22,6 @@ Comment.init(
         key: "id",
       },
     },
-    commenter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
