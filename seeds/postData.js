@@ -2,34 +2,39 @@ const { Post } = require("../models");
 
 const postdata = [
   {
-    title: "My first post",
-    contents: "This is my first post and I love this blog!",
+    title: "OOP",
+    contents:
+      "I learned a lot about object oriented programming this week, it's complicated!",
     user_id: 1,
   },
   {
-    title: "My second post",
-    contents: "This is my second post and I love this blog!",
+    title: "Cryptocurrency",
+    contents:
+      "I learned about bitcoin and ethereum 10 years ago, I wish I acted on it...",
     user_id: 1,
   },
   {
-    title: "My third post",
-    contents: "This is my third post and I love this blog!",
+    title: "Artificial Intelligence",
+    contents:
+      "I have seen a lot about Facebook/Meta developing AI.  What do you guys think, will the AI robots take over the world?",
     user_id: 1,
   },
   {
-    title: "Dogs",
-    contents: "This is a blog post about dogs.",
+    title: "Video Games",
+    contents: "Have you guys played the new Fortnite Chapter 3?  It's fun!",
     user_id: 2,
   },
   {
-    title: "Cats",
-    contents: "This is a blog post about cats.",
+    title: "Macbook Pro",
+    contents:
+      "Does anyone use a macbook pro for web development?  How do the specs hold up vs. other pcs?",
     user_id: 3,
   },
   {
-    title: "Wolves",
-    contents: "This is a blog post about wolves.",
-    user_id: 2,
+    title: "ReactJS",
+    contents:
+      "I can't wait to start learning about React.  I've had a little experience putting together React apps and they are so robust!",
+    user_id: 3,
   },
 ];
 

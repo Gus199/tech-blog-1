@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
+          attributes: { exclude: ["password"] },
         },
         { model: Comment, include: [{ model: User }] },
       ],
@@ -37,6 +38,7 @@ router.get("/post/:id", async (req, res) => {
       include: [
         {
           model: User,
+          attributes: { exclude: ["password"] },
         },
         { model: Comment, include: [{ model: User }] },
       ],
@@ -47,20 +49,29 @@ router.get("/post/:id", async (req, res) => {
     const post = postData.get({ plain: true });
     console.log(post);
 
-    res.render("post", {
-      ...post,
-      logged_in: req.session.logged_in,
-    });
+    if (req.session.user_id === post.user_id) {
+      res.render("userPost", {
+        ...post,
+        logged_in: req.session.logged_in,
+        page_title: "Update Post",
+      });
+    } else {
+      res.render("post", {
+        ...post,
+        logged_in: req.session.logged_in,
+        page_title: "Tech Blog",
+      });
+    }
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // get single user by id and include any posts
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      // TODO: remove password from data we include from user
+      attributes: { exclude: ["password"] },
       include: [{ model: Post }],
     });
     if (!userData) {
@@ -74,7 +85,7 @@ router.get("/user/:id", async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get("/profile", withAuth, async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -84,7 +95,7 @@ router.get("/profile", withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render("profile", {
+    res.render("dashboard", {
       ...user,
       logged_in: true,
       page_title: "Your Dashboard",
@@ -94,17 +105,33 @@ router.get("/profile", withAuth, async (req, res) => {
   }
 });
 
+// Get login page
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.redirect("/dashboard");
     return;
   }
 
-  res.render("login");
+  res.render("login", {
+    page_title: "Login",
+  });
 });
 
-router.get("/posts/add", (req, res) => {
+// Get signup page
+router.get("/signup", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    return;
+  }
+
+  res.render("signup", {
+    page_title: "Sign up",
+  });
+});
+
+router.get("/posts/add", withAuth, (req, res) => {
   try {
     res.status(200).render("addPostForm", {
       logged_in: req.session.logged_in,

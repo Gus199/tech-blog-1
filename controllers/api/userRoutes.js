@@ -16,8 +16,6 @@ userRoutes.get("/", async (req, res) => {
 });
 
 // sign up route
-// WORKING
-// TODO: error handling
 userRoutes.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -48,8 +46,6 @@ userRoutes.post("/login", async (req, res) => {
         .send(
           JSON.stringify({ message: `The user with email doesn't exist.` })
         );
-      // res.status(500).json(response);
-      // return;
     }
     const validPassword = await userData.checkPassword(req.body.password);
     if (!validPassword) {
@@ -66,7 +62,6 @@ userRoutes.post("/login", async (req, res) => {
   }
 });
 
-// WORKING
 // logout user
 userRoutes.post("/logout", (req, res) => {
   if (req.session.logged_in) {

@@ -27,12 +27,6 @@ body {
   text-decoration: underline;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
-
 nav {
   margin: 0 1rem 1rem 1rem;
 }
@@ -82,8 +76,9 @@ a {
   margin-bottom: 1em;
 }
 
-.created-details {
-  font-size: 0.5em;
+.created-details,
+.comment-details {
+  font-size: 0.7em;
   margin: 0;
   padding: 0;
 }
@@ -99,7 +94,9 @@ a {
 }
 
 .post-title {
-  font-size: 0.8em;
+  font-size: 16px;
+  color: var(--primary-light);
+  margin: 0px;
 }
 
 .post-content {
@@ -123,4 +120,28 @@ a {
 
 .add-post-button:hover {
   cursor: pointer;
+}
+
+.comments {
+  border: 2px solid var(--primary-dark);
+  /* padding: 1em; */
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* margin-top: 1em; */
+  margin: 1em;
+}
+
+.comment-details {
+  margin-left: 2em;
+}
+
+.comments-header {
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  /* margin: 1em; */
+  padding: 1em;
 }
