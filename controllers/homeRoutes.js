@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
     res.render("homepage", {
       posts,
       logged_in: req.session.logged_in,
-      dashboard_title: false,
+      page_title: "Tech Blog",
     });
   } catch (err) {
     res.status(500).json(err);
@@ -87,7 +87,7 @@ router.get("/profile", withAuth, async (req, res) => {
     res.render("profile", {
       ...user,
       logged_in: true,
-      dashboard_title: true,
+      page_title: "Your Dashboard",
     });
   } catch (err) {
     res.status(500).json(err);
@@ -102,6 +102,17 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.get("/posts/add", (req, res) => {
+  try {
+    res.status(200).render("addPostForm", {
+      logged_in: req.session.logged_in,
+      page_title: "Create Post",
+    });
+  } catch (err) {
+    res.status(500).json("Could not find post form");
+  }
 });
 
 module.exports = router;

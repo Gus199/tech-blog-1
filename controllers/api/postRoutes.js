@@ -8,7 +8,7 @@ postRoutes.post("/", async (req, res) => {
     ...req.body,
     // TODO: change user_id to come from req.session.user_id
     // user_id: req.session.user_id,
-    user_id: 2,
+    user_id: req.session.user_id,
   })
     .then((post) => {
       res.status(200).json(post);
