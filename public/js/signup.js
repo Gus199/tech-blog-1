@@ -14,8 +14,16 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      errorMessage("Failed to signup user");
     }
+  }
+  if (!username) {
+    errorMessage("Please enter a username to sign up");
+    // alert("please enter a username for this post");
+  } else if (!password) {
+    errorMessage("Please enter a password to sign up");
+
+    // alert("please enter a password for this post");
   }
 };
 

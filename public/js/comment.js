@@ -17,8 +17,11 @@ const commentFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace(`/post/${id}`);
     } else {
-      alert("Failed to submit comment");
+      errorMessage("Failed to submit comment");
     }
+  } else {
+    errorMessage("Please enter a comment to submit");
+    // alert("please enter a comment");
   }
 };
 

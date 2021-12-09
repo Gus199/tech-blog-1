@@ -16,8 +16,16 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert("Failed to create post");
+      errorMessage("Failed to create post");
     }
+  }
+  if (!title) {
+    errorMessage("Please enter a title for this post");
+    // alert("please enter a title for this post");
+  } else if (!contents) {
+    errorMessage("Please enter content for this post");
+
+    // alert("please enter content for this post");
   }
 };
 

@@ -18,8 +18,17 @@ const updateFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert("Failed to update post");
+      errorMessage("Failed to update post");
     }
+  }
+
+  if (!title) {
+    errorMessage("Please enter a title for this post");
+    // alert("please enter a title for this post");
+  } else if (!contents) {
+    errorMessage("Please enter content for this post");
+
+    // alert("please enter content for this post");
   }
 };
 

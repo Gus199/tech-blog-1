@@ -9,7 +9,8 @@
   </head>
 
   <body>
-    <div class="">
+
+    <div>
       <header class="nav-header">
         <nav class="display-flex">
           <a href="/" class="">Home</a>
@@ -24,16 +25,24 @@
         {{>pageTitle}}
       </header>
       <main class="container container-fluid mt-5">
+      
+        <div class="error-message">
+          <button class="error-close-button no-button">close</button>
+          <div class="error-content"></div>
+        </div>
         {{{body}}}
       </main>
+      </div>
       <footer>
 
       </footer>
-    </div>
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
+
     {{/if}}
+          <script src="/js/errorMessage.js"></script>
+
   </body>
 
 </html>

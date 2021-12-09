@@ -17,9 +17,20 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the dashboard page
       document.location.replace("/dashboard");
     } else {
-      console.log(response.message);
-      alert(response.statusText);
+      let res = await response.json();
+      errorMessage(res.message);
+      // console.log(message);
+      // alert(response.statusText);
     }
+  }
+
+  if (!username) {
+    errorMessage("Please enter a username to login");
+    // alert("please enter a username");
+  } else if (!password) {
+    errorMessage("Please enter a password to login");
+
+    // alert("please enter a password");
   }
 };
 

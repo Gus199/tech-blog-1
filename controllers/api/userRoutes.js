@@ -34,18 +34,13 @@ userRoutes.post("/", async (req, res) => {
 // login route
 // TODO: how to send message to user on failure (incorrect username, incorrect password, etc.)
 userRoutes.post("/login", async (req, res) => {
-  const response = { message: "incorrect username bro" };
   try {
     const userData = await User.findOne({
       where: { username: req.body.username },
     });
 
     if (!userData) {
-      return res
-        .status(400)
-        .send(
-          JSON.stringify({ message: `The user with email doesn't exist.` })
-        );
+      return res.status(400).json({ message: `This username does not exist` });
     }
     const validPassword = await userData.checkPassword(req.body.password);
     if (!validPassword) {
