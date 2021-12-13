@@ -5,7 +5,9 @@
 ## Description
 
 ​
-A full stack blog application.
+A full stack blog application. Please see the following for a link to the deployed site:
+
+https://community-tech-blog.herokuapp.com/
 ​
 
 ## Table of Contents
@@ -37,6 +39,7 @@ npm i
 
 ## Usage
 
+If you are downloading this repo to test on your local machine, you will need to create the database, seed the database, and start the server:
 ​
 source db/schema.sql; node seeds/index.js; nodemon server;
 
